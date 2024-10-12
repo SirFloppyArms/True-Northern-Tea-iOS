@@ -17,7 +17,7 @@ struct ContentView: View {
                 Color.clear.frame(height: 50)
                 HStack {
                     Spacer()
-                    HStack(spacing: 15) {
+                    HStack(spacing: 20) {
                         Image("search-icon")
                             .resizable()
                             .frame(width: 25, height: 25)
@@ -36,7 +36,6 @@ struct ContentView: View {
                     .padding(.trailing, 20)
                 }
                 .padding(.vertical)
-//                .background(Color.white)
                 .overlay(Divider(), alignment: .bottom)
 
                 if showMenu {
@@ -48,34 +47,36 @@ struct ContentView: View {
                         menuLink("About Us", sectionId: "section5")
                         menuLink("Contact Us", sectionId: "section6")
                     }
-                    .background(Color.white)
+                    .background(Color.white.shadow(radius: 10))
                     .transition(.move(edge: .top))
                 }
 
                 // BANNER
-                VStack {
+                VStack(spacing: 15) {
                     Text("True Northern Tea")
-                        .font(.system(size: 60))
+                        .font(.custom("Baskerville-Bold", size: 60))
                         .multilineTextAlignment(.center)
                         .foregroundColor(.white)
-                        .layoutPriority(2)
+                        .shadow(radius: 10)
 
-                    Text("Here at True Northern Tea, we invite you to explore our handcrafted, natural selection of tea...")
+                    Text("Here at True Northern Tea, we invite you to explore our handcrafted, natural selection of tea, where we've dedicated our passion to your enjoyment and well-being. We have anything from calm fall blends, to soothing holiday infusions. Enjoy!")
+                        .font(.custom("Georgia", size: 20))
                         .multilineTextAlignment(.center)
-                        .foregroundColor(.white)
+                        .foregroundColor(.white.opacity(0.9))
                         .padding(.horizontal)
 
                     Button(action: {
                         print("Order Now button clicked")
                     }) {
                         Text("Order Now")
-                            .font(.system(size: 16))
-                            .padding()
-                            .background(Color.white)
+                            .font(.custom("HelveticaNeue", size: 18))
+                            .padding(.horizontal, 30)
+                            .padding(.vertical, 10)
+                            .background(LinearGradient(gradient: Gradient(colors: [.white, .gray]), startPoint: .top, endPoint: .bottom))
                             .foregroundColor(.black)
-                            .cornerRadius(5)
+                            .cornerRadius(10)
+                            .shadow(radius: 10)
                     }
-                    .layoutPriority(0)
                 }
                 .padding(.bottom, 40)
                 .padding(.top, 20)
@@ -90,11 +91,12 @@ struct ContentView: View {
                     .overlay(Color.black.opacity(0.3))
             }
 
-
             // ALLERGEN ALERT SECTION
             SectionView(title: "Allergen Alert", backgroundColor: .white, textColor: .black) {
                 Text("Despite our best efforts, We cannot guarantee that the tea has not come into contact with peanuts, nuts & other allergens.")
+                    .font(.custom("Georgia", size: 16))
                     .multilineTextAlignment(.center)
+                    .padding()
             }
             .id("section2")
 
@@ -106,22 +108,26 @@ struct ContentView: View {
                     productView(title: "Warm Chai, C$5.00", imageName: "warm-chai", message: "I would like to buy Warm Chai")
                     productView(title: "Pumpkin Spice, C$5.00", imageName: "pumpkin-spice", message: "I would like to buy Pumpkin Spice")
                 }
-                .frame(height: 275)
+                .frame(height: 300)
                 .tabViewStyle(.page)
             }
             .id("section3")
 
             // DELIVERY & PICKUP SECTION
             SectionView(title: "Delivery & Pickup", backgroundColor: .white, textColor: .black) {
-                Text("FREE DELIVERY AND PICKUP TO OAKBANK RESIDENTS ONLY. Orders will be delivered within 3 days. Please contact us at truenortherntea@gmail.com to schedule pick up.")
+                Text("FREE DELIVERY AND PICKUP TO OAKBANK RESIDENTS ONLY. Orders will be delivered within 3 days. Please contact us at truenortherntea@gmail.com to schedule pickup.")
+                    .font(.custom("Georgia", size: 16))
                     .multilineTextAlignment(.center)
+                    .padding()
             }
             .id("section4")
 
             // ABOUT US SECTION
             SectionView(title: "About Us", backgroundColor: .gray, textColor: .black) {
-                Text("I’m Levi, a 15-year-old with a passion to make natural and healthy tea blends. At True Northern Tea, we use only the finest natural ingredients to create delicious yet nourishing and beneficial teas.Our mission is to make tea that tastes amazing but contains pure and simple natural ingredients while being convenient and at an affordable cost. Thank you for joining me on this journey!")
+                Text("I’m Levi, a 15-year-old with a passion to make natural and healthy tea blends. At True Northern Tea, we use only the finest natural ingredients to create delicious yet nourishing and beneficial teas. Our mission is to make tea that tastes amazing but contains pure and simple natural ingredients while being convenient and at an affordable cost. Thank you for joining me on this journey!")
+                    .font(.custom("Georgia", size: 16))
                     .multilineTextAlignment(.center)
+                    .padding()
             }
             .id("section5")
 
@@ -131,6 +137,7 @@ struct ContentView: View {
                     Link("Manitoba, Canada", destination: URL(string: "https://www.google.ca/maps/place/Manitoba/")!)
                     Link("truenortherntea@gmail.com", destination: URL(string: "mailto:truenortherntea@gmail.com")!)
                 }
+                .font(.custom("Georgia", size: 16))
             }
             .id("section6")
 
@@ -150,19 +157,26 @@ struct ContentView: View {
             }
         }) {
             Text(text)
+                .font(.custom("HelveticaNeue", size: 18))
                 .foregroundColor(.black)
                 .padding(.vertical, 10)
                 .padding(.horizontal, 20)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
+        .background(Color.gray.opacity(0.1))
+        .cornerRadius(8)
     }
 
     func productView(title: String, imageName: String, message: String) -> some View {
-        VStack {
+        VStack(spacing: 10) {
             Text(title)
+                .font(.custom("HelveticaNeue", size: 16))
             Image(imageName)
                 .resizable()
-                .frame(width: 100, height: 100)
+                .frame(width: 120, height: 120)
+                .cornerRadius(10)
+                .shadow(radius: 5)
+
             Button(action: {
                 let sms = "sms:2044038767&body=\(message)"
                 if let url = URL(string: sms) {
@@ -170,19 +184,24 @@ struct ContentView: View {
                 }
             }) {
                 Text("Buy Now")
+                    .font(.custom("HelveticaNeue-Bold", size: 16))
                     .padding()
                     .background(Color.white)
                     .foregroundColor(.black)
-                    .cornerRadius(5)
+                    .cornerRadius(8)
+                    .shadow(radius: 5)
             }
         }
         .padding()
+        .background(Color.gray.opacity(0.1))
+        .cornerRadius(15)
     }
 
     var footerView: some View {
         VStack {
             Text("© 2024 True Northern Tea. All rights reserved.")
                 .foregroundColor(Color(UIColor.lightGray))
+                .font(.custom("HelveticaNeue", size: 14))
         }
         .padding()
         .background(Color.black)
@@ -205,13 +224,16 @@ struct SectionView<Content: View>: View {
     var body: some View {
         VStack {
             Text(title)
-                .font(.headline)
+                .font(.custom("HelveticaNeue-Bold", size: 24))
                 .foregroundColor(textColor)
+                .padding(.bottom, 10)
             content()
                 .foregroundColor(textColor)
         }
         .padding()
         .background(backgroundColor)
+        .cornerRadius(12)
+        .shadow(radius: 10)
         .frame(maxWidth: .infinity)
     }
 }

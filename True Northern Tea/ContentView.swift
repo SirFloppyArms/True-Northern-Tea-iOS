@@ -57,36 +57,41 @@ struct ContentView: View {
             }
 
             // BANNER
-            ZStack(alignment: .topLeading) {
+            VStack {
+                Text("True Northern Tea")
+                    .font(.system(size: 60))
+                    .multilineTextAlignment(.center)
+                    .foregroundColor(.white)
+                    .layoutPriority(2)
+
+                Text("Here at True Northern Tea, we invite you to explore our handcrafted, natural selection of tea...")
+                    .multilineTextAlignment(.center)
+                    .foregroundColor(.white)
+                    .padding(.horizontal)
+
+                Button(action: {
+                    print("Order Now button clicked")
+                }) {
+                    Text("Order Now")
+                        .font(.system(size: 16))
+                        .padding()
+                        .background(Color.white)
+                        .foregroundColor(.black)
+                        .cornerRadius(5)
+                }
+                .layoutPriority(0)
+            }
+            .padding(.bottom, 40)
+            .padding(.top, 20)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background {
+                //                    Color.red
                 Image("banner")
                     .resizable()
                     .scaledToFill()
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .overlay(Color.black.opacity(0.3))
-
-                VStack {
-                    Text("True Northern Tea")
-                        .font(.system(size: 60))
-                        .foregroundColor(.white)
-                    Text("Here at True Northern Tea, we invite you to explore our handcrafted, natural selection of tea...")
-                        .foregroundColor(.white)
-                        .padding(.horizontal)
-                    Button(action: {
-                        print("Order Now button clicked")
-                    }) {
-                        Text("Order Now")
-                            .font(.system(size: 16))
-                            .padding()
-                            .background(Color.white)
-                            .foregroundColor(.black)
-                            .cornerRadius(5)
-                    }
-                }
-                .scaledToFit()
-                .padding(.bottom, 50)
             }
-            .frame(maxHeight: .infinity)
-            .background(Color.clear)
             .id("section1")
 
             // ALLERGEN ALERT SECTION

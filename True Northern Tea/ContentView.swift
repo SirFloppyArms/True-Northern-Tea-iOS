@@ -13,86 +13,83 @@ struct ContentView: View {
     var body: some View {
         ScrollView(.vertical) {
             // HEADER
-            HStack {
-                Text("True Northern Tea")
-                    .font(.headline)
-                    .foregroundColor(.black)
-                    .padding(.leading, 20)
-
-                Spacer()
-
-                HStack(spacing: 15) {
-                    Image("search-icon")
-                        .resizable()
-                        .frame(width: 25, height: 25)
-                    Image("cart-icon")
-                        .resizable()
-                        .frame(width: 25, height: 25)
-                    Image("menu-icon")
-                        .resizable()
-                        .frame(width: 25, height: 25)
-                        .onTapGesture {
-                            withAnimation {
-                                showMenu.toggle()
-                            }
-                        }
-                }
-                .padding(.trailing, 20)
-            }
-            .padding(.vertical)
-            .background(Color.white)
-            .overlay(Divider(), alignment: .bottom)
-
-            if showMenu {
-                VStack(alignment: .leading) {
-                    menuLink("Home", sectionId: "section1")
-                    menuLink("Allergen Alert", sectionId: "section2")
-                    menuLink("Featured Products", sectionId: "section3")
-                    menuLink("Delivery & Pickup", sectionId: "section4")
-                    menuLink("About Us", sectionId: "section5")
-                    menuLink("Contact Us", sectionId: "section6")
-                }
-                .background(Color.white)
-                .transition(.move(edge: .top))
-            }
-
-            // BANNER
             VStack {
-                Text("True Northern Tea")
-                    .font(.system(size: 60))
-                    .multilineTextAlignment(.center)
-                    .foregroundColor(.white)
-                    .layoutPriority(2)
-
-                Text("Here at True Northern Tea, we invite you to explore our handcrafted, natural selection of tea...")
-                    .multilineTextAlignment(.center)
-                    .foregroundColor(.white)
-                    .padding(.horizontal)
-
-                Button(action: {
-                    print("Order Now button clicked")
-                }) {
-                    Text("Order Now")
-                        .font(.system(size: 16))
-                        .padding()
-                        .background(Color.white)
-                        .foregroundColor(.black)
-                        .cornerRadius(5)
+                Color.clear.frame(height: 50)
+                HStack {
+                    Spacer()
+                    HStack(spacing: 15) {
+                        Image("search-icon")
+                            .resizable()
+                            .frame(width: 25, height: 25)
+                        Image("cart-icon")
+                            .resizable()
+                            .frame(width: 25, height: 25)
+                        Image("menu-icon")
+                            .resizable()
+                            .frame(width: 25, height: 25)
+                            .onTapGesture {
+                                withAnimation {
+                                    showMenu.toggle()
+                                }
+                            }
+                    }
+                    .padding(.trailing, 20)
                 }
-                .layoutPriority(0)
+                .padding(.vertical)
+//                .background(Color.white)
+                .overlay(Divider(), alignment: .bottom)
+
+                if showMenu {
+                    VStack(alignment: .leading) {
+                        menuLink("Home", sectionId: "section1")
+                        menuLink("Allergen Alert", sectionId: "section2")
+                        menuLink("Featured Products", sectionId: "section3")
+                        menuLink("Delivery & Pickup", sectionId: "section4")
+                        menuLink("About Us", sectionId: "section5")
+                        menuLink("Contact Us", sectionId: "section6")
+                    }
+                    .background(Color.white)
+                    .transition(.move(edge: .top))
+                }
+
+                // BANNER
+                VStack {
+                    Text("True Northern Tea")
+                        .font(.system(size: 60))
+                        .multilineTextAlignment(.center)
+                        .foregroundColor(.white)
+                        .layoutPriority(2)
+
+                    Text("Here at True Northern Tea, we invite you to explore our handcrafted, natural selection of tea...")
+                        .multilineTextAlignment(.center)
+                        .foregroundColor(.white)
+                        .padding(.horizontal)
+
+                    Button(action: {
+                        print("Order Now button clicked")
+                    }) {
+                        Text("Order Now")
+                            .font(.system(size: 16))
+                            .padding()
+                            .background(Color.white)
+                            .foregroundColor(.black)
+                            .cornerRadius(5)
+                    }
+                    .layoutPriority(0)
+                }
+                .padding(.bottom, 40)
+                .padding(.top, 20)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .id("section1")
             }
-            .padding(.bottom, 40)
-            .padding(.top, 20)
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background {
-                //                    Color.red
                 Image("banner")
                     .resizable()
                     .scaledToFill()
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .overlay(Color.black.opacity(0.3))
             }
-            .id("section1")
+
 
             // ALLERGEN ALERT SECTION
             SectionView(title: "Allergen Alert", backgroundColor: .white, textColor: .black) {
@@ -140,6 +137,7 @@ struct ContentView: View {
             // FOOTER
             footerView
         }
+        .edgesIgnoringSafeArea(.top)
     }
 
     // Custom views

@@ -57,7 +57,7 @@ struct ContentView: View {
             }
 
             // BANNER
-            ZStack {
+            ZStack(alignment: .topLeading) {
                 Image("banner")
                     .resizable()
                     .scaledToFill()
@@ -82,6 +82,7 @@ struct ContentView: View {
                             .cornerRadius(5)
                     }
                 }
+                .scaledToFit()
                 .padding(.bottom, 50)
             }
             .frame(maxHeight: .infinity)

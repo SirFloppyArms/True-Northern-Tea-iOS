@@ -1,6 +1,7 @@
 {
   "images" : [
     {
+      "filename" : "FED77F24-8863-4559-B8E9-9DB2777CCEED_1_201_a-1024 2.png",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"
@@ -12,6 +13,7 @@
           "value" : "dark"
         }
       ],
+      "filename" : "FED77F24-8863-4559-B8E9-9DB2777CCEED_1_201_a-1024 1.png",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"
@@ -23,6 +25,7 @@
           "value" : "tinted"
         }
       ],
+      "filename" : "FED77F24-8863-4559-B8E9-9DB2777CCEED_1_201_a-1024.png",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"

@@ -109,13 +109,13 @@ struct ContentView: View {
 
             // DELIVERY & PICKUP SECTION
             SectionView(title: "Delivery & Pickup", backgroundColor: .white, textColor: .black) {
-                Text("FREE DELIVERY AND PICKUP TO OAKBANK RESIDENTS...")
+                Text("FREE DELIVERY AND PICKUP TO OAKBANK RESIDENTS. Orders will be delivered within 3 days. Please contact us at truenortherntea@gmail.com to schedule pick up.")
             }
             .id("section4")
 
             // ABOUT US SECTION
             SectionView(title: "About Us", backgroundColor: .gray, textColor: .black) {
-                Text("I’m Levi, a 15-year-old with a passion to make natural and healthy tea blends...")
+                Text("I’m Levi, a 15-year-old with a passion to make natural and healthy tea blends. At True Northern Tea, we use only the finest natural ingredients to create delicious yet nourishing and beneficial teas.Our mission is to make tea that tastes amazing but contains pure and simple natural ingredients while being convenient and at an affordable cost. Thank you for joining me on this journey!")
             }
             .id("section5")
 

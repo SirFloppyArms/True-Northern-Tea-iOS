@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  True Northern Tea
-//
-//  Created by Nolan Law on 2024-10-12.
-//
-
 // MARK: - STARTING
 
 import SwiftUI
@@ -54,6 +47,7 @@ struct ContentView: View {
                 }
                 .padding(.vertical)
                 .overlay(Divider(), alignment: .bottom)
+                .ignoresSafeArea(edges: .top)
 
                 //MARK: - MENU & CART
                 if showMenu {
@@ -234,7 +228,7 @@ struct ContentView: View {
                     let totalCost = cartItems.count * 5 // Assuming each item is $5. Update as needed.
                     let itemNames = cartItems.map { $0.title }.joined(separator: ", ")
                     let smsBody = "I would like to purchase \(itemNames) for C$\(totalCost)."
-                    let sms = "sms:2044038767&body=\(smsBody)"
+                    let sms = "sms:2044038767?body=\(smsBody)"
                     
                     if let url = URL(string: sms) {
                         UIApplication.shared.open(url)
